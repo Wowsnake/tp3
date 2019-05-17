@@ -1,10 +1,12 @@
 package fr.univ_amu.iut.exercice3;
 
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import static javafx.beans.binding.Bindings.*;
 
 public class TriangleArea {
 
@@ -20,6 +22,7 @@ public class TriangleArea {
     private DoubleProperty area = new SimpleDoubleProperty(0);
 
     public TriangleArea() {
+
         createBinding();
     }
 
@@ -137,10 +140,12 @@ public class TriangleArea {
     }
 
     void printResult() {
-        throw new RuntimeException("Not yet implemented !");
+        System.out.println("For P1(" + x1.get() + "," + y1.get() + "), " + "P2(" + x2.get() + "," + y2.get() + "), " + "P3(" + x3.get() + "," + y3.get() + "), " + "the area of triangle ABC is " + area.get());
+        //throw new RuntimeException("Not yet implemented !");
     }
 
     private void createBinding() {
-        throw new RuntimeException("Not yet implemented !");
+         area.bind(subtract(add(subtract(add(subtract(Bindings.multiply(x1,y2), Bindings.multiply(x1,y3)), Bindings.multiply(x2,y3)), Bindings.multiply(x2,y1)), Bindings.multiply(x3,y1)), Bindings.multiply(x3,y2)).divide(2.0));
+        //throw new RuntimeException("Not yet implemented !");
     }
 }
