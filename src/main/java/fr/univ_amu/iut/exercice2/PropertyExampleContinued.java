@@ -43,6 +43,6 @@ public class PropertyExampleContinued {
         otherproperty.unbind();
         anIntProperty.set(8192);
         System.out.println("Calling anIntProperty.set(8192).");
-        //throw new RuntimeException("Not yet implemented !");
+        //throw new RuntimeException("Not yet implemented !");;
     }
 }
