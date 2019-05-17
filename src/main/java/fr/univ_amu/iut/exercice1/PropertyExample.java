@@ -31,9 +31,9 @@ public class PropertyExample {
     void createProperty() {
         anIntProperty = new SimpleIntegerProperty(1024);
         System.out.println();
-        System.out.println("anIntProperty = IntegerProperty [value: 1024]");
-        System.out.println("anIntProperty.get() = 1024");
-        System.out.println("anIntProperty.getValue() = 1024");
+        System.out.println("anIntProperty = " + anIntProperty);
+        System.out.println("anIntProperty.get() = " + anIntProperty.get());
+        System.out.println("anIntProperty.getValue() = " + anIntProperty.getValue());
 
     }
 
