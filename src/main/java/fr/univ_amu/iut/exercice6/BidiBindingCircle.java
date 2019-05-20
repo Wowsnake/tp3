@@ -2,6 +2,8 @@ package fr.univ_amu.iut.exercice6;
 
 
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
@@ -10,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 
 public class BidiBindingCircle extends Application {
 
@@ -43,7 +46,12 @@ public class BidiBindingCircle extends Application {
     }
 
     private void createBindings() {
-        throw new RuntimeException("Not yet implemented !");
+        c.centerXProperty().bind(pane.widthProperty().divide(2));
+        c.centerYProperty().bind(pane.widthProperty().divide(2));
+        Bindings.bindBidirectional(c.radiusProperty(), slider.valueProperty());
+        c.setRadius(150);
+        Bindings.bindBidirectional(textField.textProperty(), c.radiusProperty(), new NumberStringConverter());
+        //throw new RuntimeException("Not yet implemented !");
     }
 
     private void configStage(Stage stage) {
@@ -54,11 +62,15 @@ public class BidiBindingCircle extends Application {
     }
 
     private void addSlider() {
-        throw new RuntimeException("Not yet implemented !");
+        pane.getChildren().add(c);
+        slider.setMax(250);
+        slider.setMin(0);
+        BorderPane.setMargin(slider, new Insets(20, 5, 5, 5));
+        //throw new RuntimeException("Not yet implemented !");
     }
 
     private void addPane() {
-        pane.getChildren().add(c);
+        pane.getChildren().add(slider);
         pane.setPrefWidth(500);
         pane.setPrefHeight(500);
         root.setCenter(pane);
